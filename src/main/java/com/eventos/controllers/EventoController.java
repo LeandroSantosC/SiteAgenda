@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.eventos.models.Evento;
 import com.eventos.repository.EventoRepository;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
 
