@@ -1,0 +1,3 @@
+DATABASE_URL=jdbc:postgresql://dpg-cpeimo5ds78s73f7pgjg-a.oregon-postgres.render.com:5432/eventosapp_pu5u
+DATABASE_USERNAME=admineventos
+DATABASE_PASSWORD=Ng9mTwA5KEynlljN2OoeLltnQeL8mYWa
