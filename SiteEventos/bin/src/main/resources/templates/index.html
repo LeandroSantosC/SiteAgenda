@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventosApp</title>
+</head>
+<body>
+    
+    <h1>Lista de Eventos</h1>
+    <h3><a href="/cadastrarEvento">Cadastrar Evento</a></h3>
+
+    <div th:each="evento : ${eventos}">
+        <div class="row">
+            <p><span th:text="${evento.nome}"></span></p>
+            <p><span th:text="${evento.local}"></span></p>
+            <p><span th:text="${evento.data}"></span></p>
+            <p><span th:text="${evento.horario}"></span></p>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
