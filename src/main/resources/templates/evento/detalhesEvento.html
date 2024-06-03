@@ -11,14 +11,25 @@
     
           <!--Let browser know website is optimized for mobile-->
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+          <link rel="stylesheet" href="style/styleCss.css"/>
 </head>
 <body>
     
-    <h1>Lista de Eventos</h1>
-    <h3><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">event</i>Lista de Eventos</a></h3>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Detalhes do evento</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle</i>Cadastrar Evento</a></li>
+                <li><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">event</i>Eventos</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
     
     <div class="row">
-    <table class="container">
+    <table class="container formConvidado">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -30,32 +41,37 @@
         <tbody>
             <tr th:each="evento : ${evento}">
                 <td><span th:text="${evento.nome}"></span></td>
+                <td><span th:text="${evento.local}"></span></td>
                 <td><span th:text="${evento.data}"></span></td>
                 <td><span th:text="${evento.horario}"></span></td>
-                <td><span th:text="${evento.local}"></span></td>
             </tr>
         </tbody>
     </table>
 
     <th:block th:include="mensagemValidacao"></th:block>
 
-    <form method="post" class="container">
+    <form method="post" class="container formConvidado">
+        <h5>Adicionar convidado</h5>
         Nome: <input type="text" value="" name="nomeConvidado" placeholder="Nome Completo"/>
-        RG: <input type="text" value="" name="rg" placeholder="AA-00.000.000" class="validate"/>
+        RG: <input type="text" value="" name="rg" placeholder="00.000.000" class="validate"/>
         <button type="submit" class="waves-effect waves-light btn">Adicionar</button>
     </form>
     </div>
 
-    <h5>Lista de convidados:</h5>
-    <div class="container" th:each="convidado : ${convidados}">
-        <div class="row">
-            <div class="input-field col s6">
-                <p><span th:text="${convidado.nomeConvidado}"></span></p>
-            </div>
-            <div class="input-field col s6"></div>
-                <p><span th:text="${convidado.rg}"></span></p>
-            </div>
-        </div>
+    <table class="container detalhesEvento">
+        <thead>
+            <tr>
+                <th>Nome do Convidado</th>
+                <th>RG</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr th:each="convidado : ${convidados}">
+                    <td><span th:text="${convidado.nomeConvidado}"></span></td>
+                    <td><span th:text="${convidado.rg}"></span></td>
+                </tr>
+        </tbody>
+    
     </div>
 
     <script type="text/javascript" src="js/materialize.min.js"></script>
