@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eventos.models.Convidado;
 import com.eventos.models.Evento;
 import com.eventos.repository.EventoRepository;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
@@ -17,6 +18,9 @@ public class EventoController {
 
     @Autowired
     private EventoRepository eventoRepository;
+
+    @Autowired
+    private ConvidadoRepository cr;
 
     @RequestMapping(value="/cadastrarEvento", method = RequestMethod.GET) //requisição através do metodo GET que retorna um formulario
     public String form(){
@@ -39,12 +43,20 @@ public class EventoController {
         return modelAndView;
     }
     
-    @RequestMapping("/{codigo}") //redireciona através do codigo os detalhes de cada evento
+    @RequestMapping(value="/{codigo}", method = RequestMethod.GET) //redireciona através do codigo os detalhes de cada evento
     public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) { //importando o pathvariable para receber como parametro, esse codigo fara uma busca no bd
     	    Evento evento = eventoRepository.findByCodigo(codigo);  //busca o codigo e guarda na variavel evento                                                          //porem essa busca é através de um evento especifico e não da lista toda
     	    ModelAndView modelAndView = new ModelAndView("evento/detalhesEvento"); //instanciando modelandview para a pagina html
     	    modelAndView.addObject("evento", evento);
     	    return modelAndView;
+    }
+
+    @RequestMapping(value="/{codigo}", method = RequestMethod.POST) //redireciona através do codigo os detalhes de cada evento
+    public String detalhesEventoPost(@PathVariable("codigo") long codigo, Convidado convidado) { //importando o pathvariable para receber como parametro, esse codigo fara uma busca no bd
+    	   Evento evento = er.findByCodigo(codigo);
+           convidado.setEvento(evento);
+    	   cr.save(convidado);
+    	return "redirect:/{codigo}";
     }
 }
 
