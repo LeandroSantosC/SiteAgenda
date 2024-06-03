@@ -13,11 +13,19 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Lista de Eventos</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle</i>Cadastrar Evento</a></li>
+                <li><a class="waves-effect waves-light btn" href="/eventos"><i class="material-icons left">event</i>Eventos</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
     
-    <h1>Lista de Eventos</h1>
-    <h3><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle</i>Cadastrar Evento</a></h3>
-    
-    <table class="container">
+    <table class="highlight centered container detalhesEvento">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -28,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="evento : ${eventos}">
+            <tr th:each="evento : ${eventos}" >
                 <td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
                 <td><span th:text="${evento.data}"></span></td>
                 <td><span th:text="${evento.horario}"></span></td>
