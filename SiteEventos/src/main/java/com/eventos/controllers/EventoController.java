@@ -48,6 +48,10 @@ public class EventoController {
     	    Evento evento = eventoRepository.findByCodigo(codigo);  //busca o codigo e guarda na variavel evento                                                          //porem essa busca é através de um evento especifico e não da lista toda
     	    ModelAndView modelAndView = new ModelAndView("evento/detalhesEvento"); //instanciando modelandview para a pagina html
     	    modelAndView.addObject("evento", evento);
+
+            Iterable<Convidado> convidados =cr.findByEvento(evento);
+            mv.addObject("convidados", convidados);
+
     	    return modelAndView;
     }
 

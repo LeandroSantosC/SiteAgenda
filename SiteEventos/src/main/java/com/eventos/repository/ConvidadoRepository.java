@@ -1,5 +1,8 @@
 package com.eventosapp.repository;
 
-public class ConvidadoRepository extends CrudRepository<Convidado, String>{
-    
+import org.springframework.data.repository.CrudRepository;
+import com.eventosapp.models.Convidado;
+
+public interface ConvidadoRepository extends CrudRepository<Convidado, String>{
+    Iterable<Convidado> findByEvento(Evento evento);
 }
