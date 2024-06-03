@@ -1,5 +1,6 @@
 package com.eventos.models;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -8,7 +9,10 @@ import jakarta.persistence.ManyToOne;
 public class Convidado {
     
     @Id
+    //@Nonnull
     private String rg;
+
+    //@Nonnull
     private String nomeConvidado;
 
     @ManyToOne
