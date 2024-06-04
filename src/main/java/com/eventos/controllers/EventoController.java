@@ -86,7 +86,7 @@ public class EventoController {
     @RequestMapping(value="/atualizarEvento", method = RequestMethod.GET)
     public ModelAndView atualizarEvento(long codigo){
             Evento evento = eventoRepository.findByCodigo(codigo);
-            ModelAndView modelAndView = new ModelAndView("/evento/formEventoAtt");
+            ModelAndView modelAndView = new ModelAndView("evento/formEventoAtt");
             modelAndView.addObject("evento", evento);
 
             return modelAndView;
@@ -98,6 +98,7 @@ public class EventoController {
 
         return "redirect:/eventos";
     }
+
     @RequestMapping("/deletarConvidado")
     public String deletarConvidado(String rg){
         Convidado convidado = convidadoRepository.findByRg(rg);
