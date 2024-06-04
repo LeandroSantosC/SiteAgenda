@@ -3,8 +3,10 @@ package com.eventos.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
 
 @Entity
 public class Convidado {

@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotEmpty;
 
+
 @Entity
 public class Evento implements Serializable{
 
@@ -33,7 +34,7 @@ public class Evento implements Serializable{
     
     @OneToMany
     private List<Convidado> convidados;
-    
+
     public long getCodigo() {
         return codigo;
     }
