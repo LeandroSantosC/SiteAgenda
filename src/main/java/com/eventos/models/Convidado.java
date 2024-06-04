@@ -4,11 +4,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+
 @Entity
 public class Convidado {
     
     @Id
+    @NotBlank
+    @Size(min = 8, max = 9, message = "O rg deve ser válido")
     private String rg;
+
+    @NotBlank(message = "O nome deve ser informado")
     private String nomeConvidado;
 
     @ManyToOne

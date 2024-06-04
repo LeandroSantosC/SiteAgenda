@@ -6,4 +6,6 @@ import com.eventos.models.Evento;
 
 public interface EventoRepository extends CrudRepository<Evento, String>{
 
+    Evento findByCodigo(long codigo);
+
 }

@@ -29,10 +29,10 @@
     <div class="detalhesEvento">
         <th:block th:include="mensagemValidacao"></th:block>
         <form class="container" method="post">
-            Nome: <input type="text" value="" name="nome"/>
-            Local: <input type="text" value="" name="local"/>
-            Data: <input type="date" value="" name="data"/>
-            Horario: <input type="time" value="" name="horario"/>
+            Nome: <input type="text" th:value="${evento.nome}" name="nome"/>
+            Local: <input type="text" th:value="${evento.local}" name="local"/>
+            Data: <input type="date" th:value="${evento.data}" name="data"/>
+            Horario: <input type="time" th:value="${evento.horario}" name="horario"/>
     
             <button class="waves-effect waves-light btn" type="submit">Salvar</button>
             
